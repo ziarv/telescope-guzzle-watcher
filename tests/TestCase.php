@@ -15,6 +15,7 @@ class TestCase extends TestBenchTestCase
 {
     use RefreshDatabase;
 
+
     protected function setUp(): void
     {
         parent::setUp();
