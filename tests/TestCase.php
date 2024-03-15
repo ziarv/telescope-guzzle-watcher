@@ -26,7 +26,6 @@ class TestCase extends TestBenchTestCase
     {
         parent::setUp();
 
-
         TestResponse::macro('terminateTelescope', [$this, 'terminateTelescope']);
 
         Telescope::flushEntries();
