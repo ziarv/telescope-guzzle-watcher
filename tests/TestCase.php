@@ -14,6 +14,7 @@ use Orchestra\Testbench\TestCase as TestBenchTestCase;
 class TestCase extends TestBenchTestCase
 {
     use RefreshDatabase;
+
     protected function beforeRefreshingDatabase()
     {
         if (version_compare(app()->version(), '11.0.0', '>=')) {
@@ -22,10 +23,10 @@ class TestCase extends TestBenchTestCase
             $this->artisan('vendor:publish', ['--tag' => 'telescope-migrations']);
         }
     }
+
     protected function setUp(): void
     {
         parent::setUp();
-
 
         TestResponse::macro('terminateTelescope', [$this, 'terminateTelescope']);
 
