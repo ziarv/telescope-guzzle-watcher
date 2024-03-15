@@ -14,14 +14,14 @@ use Orchestra\Testbench\TestCase as TestBenchTestCase;
 class TestCase extends TestBenchTestCase
 {
     use RefreshDatabase;
+
     protected function beforeRefreshingDatabase()
     {
-        if (version_compare(app()->version(), '11.0.0', '>=')) {
-            $config = $this->app->get('config');
-            $config->set('database.migrations.update_date_on_publish', false);
-            $this->artisan('vendor:publish', ['--tag' => 'telescope-migrations']);
-        }
+        $config = $this->app->get('config');
+        $config->set('database.migrations.update_date_on_publish', false);
+        $this->artisan('vendor:publish', ['--tag' => 'telescope-migrations']);
     }
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -56,7 +56,7 @@ class TestCase extends TestBenchTestCase
     }
 
     /**
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)
